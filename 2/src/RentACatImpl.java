@@ -68,8 +68,8 @@ public class RentACatImpl implements RentACat {
 		StringBuilder catList = new StringBuilder(""); 	//the string to be returned will be created here
 		for(int index = 0;index<cats.size();index++) {	//loop over the array list
 			if(cats.get(index).getRented() == false) {	//make sure cat is available
-				catList.append("ID " + index + ". ");	//add actual text to return value
-				catList.append(cats.get(index));
+				catList.append("ID " + (index+1) + ". ");	//add actual text to return value
+				catList.append(cats.get(index).getName());
 				catList.append("\n");
 			}
 		}
