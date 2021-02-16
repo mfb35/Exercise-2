@@ -6,6 +6,8 @@ import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
 import org.mockito.*;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class RentACatTest {
@@ -278,6 +280,16 @@ public class RentACatTest {
 		r.addCat(c1);
 		r.addCat(c2);
 		r.addCat(c3);
+		
+		Mockito.doAnswer(new Answer() {
+			@Override
+			public Object answer(InvocationOnMock invocation) throws Throwable {
+				Cat cs = (Cat) invocation.getMock();
+				cs.rentCat();
+				return null;
+			}
+		}).when(c2).returnCat();
+		
 		Mockito.when(c2.getRented()).thenReturn(true);
 		boolean hascat = r.returnCat(2);
 		assertTrue(hascat);
