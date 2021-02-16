@@ -25,6 +25,7 @@ public class RentACatImpl implements RentACat {
 			return true;
 		}
 		else {									//cat was not rented in the first place
+			System.out.println("badvoice");
 			return false;
 		}
 	}
